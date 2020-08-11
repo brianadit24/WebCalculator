@@ -17,14 +17,10 @@ function clearCalculator() {
 }
  
 function inputDigit(digit) {
-   if(calculator.waitingForSecondNumber && calculator.firstNumber === calculator.displayNumber) {
-      calculator.displayNumber = digit;
+   if (calculator.displayNumber === '0') {
+       calculator.displayNumber = digit;
    } else {
-      if(calculator.displayNumber === '0') {
-         calculator.displayNumber = digit;
-     } else {
-         calculator.displayNumber += digit;
-     }
+       calculator.displayNumber += digit;
    }
 }
 
@@ -41,6 +37,7 @@ function handleOperator(operator) {
       calculator.operator = operator;
       calculator.waitingForSecondNumber = true;
       calculator.firstNumber = calculator.displayNumber;
+      calculator.displayNumber = '0'
    } else {
       alert('Operator sudah ditetapkan')
    }
